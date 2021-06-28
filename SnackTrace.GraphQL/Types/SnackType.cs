@@ -1,12 +1,7 @@
-﻿using GraphQL;
-using GraphQL.Types;
+﻿using GraphQL.Types;
 using SnackTrace.GraphQL.Arguments;
-using SnackTrace.GraphQL.Entities.Where;
 using SnackTrace.GraphQL.Resolvers;
-using SnackTrace.GraphQL.Types.Where;
-using SnackTrace.Services.Converters;
 using SnackTrace.Services.Interfaces;
-using System.Collections.Generic;
 
 namespace SnackTrace.GraphQL.Types
 {
