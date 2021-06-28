@@ -2,8 +2,6 @@
 
 namespace SnackTrace.Services.Interfaces
 {
-	public interface IMenuService : IBaseService<Data.Models.Menu, GraphQL.Entities.Menu, GraphQL.Entities.Where.WhereMenu>
-	{
-		IEnumerable<GraphQL.Entities.Menu> GetGraph(GraphQL.Entities.Where.WhereMenu where, GraphQL.Entities.Order.OrderMenu order, int first);
-	}
+	public interface IMenuService : IBaseService<Data.Models.Menu>, IGraphService<GraphQL.Entities.Menu, GraphQL.Entities.Where.WhereMenu, GraphQL.Entities.Order.OrderMenu>
+	{ }
 }

@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace SnackTrace.Repositories.Implementations
 {
-	public class MenuRepository : BaseRepository, IMenuRepository
+	internal class MenuRepository : BaseRepository, IMenuRepository
 	{
 		public MenuRepository(DataContext dataContext) : base(dataContext)
 		{ }
@@ -53,7 +53,7 @@ namespace SnackTrace.Repositories.Implementations
 
 			return query;
 		}
-		public IQueryable<Menu> GetQuery(WhereMenu where, OrderMenu order, int first)
+		public IQueryable<Menu> GetQuery(WhereMenu where, OrderMenu order, int skip, int take)
 		{
 			var query = GetBaseQuery(where);
 
@@ -61,9 +61,14 @@ namespace SnackTrace.Repositories.Implementations
 
 			HandleOrder(ref query, order);
 
-			if (first != default)
+			if (skip != default)
 			{
-				query = query.Take(first);
+				query = query.Skip(skip);
+			}
+
+			if (take != default)
+			{
+				query = query.Take(take);
 			}
 
 			return query;

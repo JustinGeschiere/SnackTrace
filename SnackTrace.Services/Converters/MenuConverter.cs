@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace SnackTrace.Services.Converters
 {
-	public static class MenuConverter
+	internal static class MenuConverter
 	{
 		public static GraphQL.Entities.Menu ToGraphEntity(this Data.Models.Menu model)
 		{
@@ -37,7 +34,7 @@ namespace SnackTrace.Services.Converters
 			};
 		}
 
-		public static IEnumerable<Data.Models.Menu> ToDayaEntities(this IEnumerable<GraphQL.Entities.Menu> models)
+		public static IEnumerable<Data.Models.Menu> ToDataEntities(this IEnumerable<GraphQL.Entities.Menu> models)
 		{
 			foreach (var model in models)
 			{

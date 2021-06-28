@@ -3,16 +3,14 @@ using System.Linq;
 
 namespace SnackTrace.Repositories.Interfaces
 {
-	public interface IBaseRepository<Tentity, Twhere>
+	public interface IBaseRepository<Tentity>
 	{
-		public abstract IQueryable<Tentity> GetAll();
+		IQueryable<Tentity> GetAll();
 
-		public abstract Tentity Get(Guid id);
+		Tentity Get(Guid id);
 
-		public abstract void Add(Tentity entity);
+		void Add(Tentity entity);
 
-		public abstract void Remove(Guid id);
-
-		public abstract IQueryable<Tentity> GetQuery(Twhere where);
+		void Remove(Guid id);
 	}
 }

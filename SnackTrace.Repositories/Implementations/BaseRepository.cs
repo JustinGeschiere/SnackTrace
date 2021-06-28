@@ -2,7 +2,7 @@
 
 namespace SnackTrace.Repositories.Implementations
 {
-	public abstract class BaseRepository
+	internal abstract class BaseRepository
 	{
 		private protected readonly DataContext _dataContext;
 

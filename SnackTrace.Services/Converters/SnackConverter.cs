@@ -2,7 +2,7 @@
 
 namespace SnackTrace.Services.Converters
 {
-	public static class SnackConverter
+	internal static class SnackConverter
 	{
 		public static GraphQL.Entities.Snack ToGraphEntity(this Data.Models.Snack model)
 		{
@@ -33,7 +33,7 @@ namespace SnackTrace.Services.Converters
 			};
 		}
 
-		public static IEnumerable<Data.Models.Snack> ToDayaEntities(this IEnumerable<GraphQL.Entities.Snack> models)
+		public static IEnumerable<Data.Models.Snack> ToDataEntities(this IEnumerable<GraphQL.Entities.Snack> models)
 		{
 			foreach (var model in models)
 			{

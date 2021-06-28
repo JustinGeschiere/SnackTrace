@@ -3,16 +3,14 @@ using System.Collections.Generic;
 
 namespace SnackTrace.Services.Interfaces
 {
-	public interface IBaseService<Tdata, Tgraph, Twhere>
+	public interface IBaseService<Tentity>
 	{
-		IEnumerable<Tdata> GetAll();
+		IEnumerable<Tentity> GetAll();
 
-		Tdata Get(Guid id);
+		Tentity Get(Guid id);
 
-		void Add(Tdata entity);
+		void Add(Tentity entity);
 
 		void Remove(Guid id);
-
-		IEnumerable<Tgraph> GetGraph(Twhere where);
 	}
 }

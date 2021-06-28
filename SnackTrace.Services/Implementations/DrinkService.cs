@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace SnackTrace.Services.Implementations
 {
-	public class DrinkService : BaseService<IDrinkRepository>, IDrinkService
+	internal class DrinkService : BaseService<IDrinkRepository>, IDrinkService
 	{
 		public DrinkService(IDrinkRepository drinkRepository) : base(drinkRepository)
 		{ }
@@ -31,14 +31,9 @@ namespace SnackTrace.Services.Implementations
 			_repository.Remove(id);
 		}
 
-		public IEnumerable<GraphQL.Entities.Drink> GetGraph(GraphQL.Entities.Where.WhereDrink where)
+		public IEnumerable<GraphQL.Entities.Drink> GetGraphEntities(GraphQL.Entities.Where.WhereDrink where, GraphQL.Entities.Order.OrderDrink order, int skip, int take)
 		{
-			return _repository.GetQuery(where).ToGraphEntities();
-		}
-
-		public IEnumerable<GraphQL.Entities.Drink> GetGraph(GraphQL.Entities.Where.WhereDrink where, GraphQL.Entities.Order.OrderDrink order, int first)
-		{
-			return _repository.GetQuery(where, order, first).ToGraphEntities();
+			return _repository.GetQuery(where, order, skip, take).ToGraphEntities();
 		}
 	}
 }

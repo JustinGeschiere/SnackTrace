@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 
 namespace SnackTrace.Services.Converters
 {
-	public static class DrinkConverter
+	internal static class DrinkConverter
 	{
 		public static GraphQL.Entities.Drink ToGraphEntity(this Data.Models.Drink model)
 		{
@@ -34,7 +33,7 @@ namespace SnackTrace.Services.Converters
 			};
 		}
 
-		public static IEnumerable<Data.Models.Drink> ToDayaEntities(this IEnumerable<GraphQL.Entities.Drink> models)
+		public static IEnumerable<Data.Models.Drink> ToDataEntities(this IEnumerable<GraphQL.Entities.Drink> models)
 		{
 			foreach (var model in models)
 			{

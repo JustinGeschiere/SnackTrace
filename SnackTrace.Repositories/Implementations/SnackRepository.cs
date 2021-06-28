@@ -5,13 +5,11 @@ using SnackTrace.GraphQL.Entities.Order;
 using SnackTrace.GraphQL.Entities.Where;
 using SnackTrace.Repositories.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 
 namespace SnackTrace.Repositories.Implementations
 {
-	public class SnackRepository : BaseRepository, ISnackRepository
+	internal class SnackRepository : BaseRepository, ISnackRepository
 	{
 		public SnackRepository(DataContext dataContext) : base(dataContext)
 		{ }
@@ -46,16 +44,7 @@ namespace SnackTrace.Repositories.Implementations
 			_dataContext.SaveChanges();
 		}
 
-		public IQueryable<Snack> GetQuery(WhereSnack where)
-		{
-			var query = GetBaseQuery(where);
-
-			HandleWhere(ref query, where);
-
-			return query;
-		}
-
-		public IQueryable<Snack> GetQuery(WhereSnack where, OrderSnack order, int first)
+		public IQueryable<Snack> GetQuery(WhereSnack where, OrderSnack order, int skip, int take)
 		{
 			var query = GetBaseQuery(where);
 
@@ -63,9 +52,14 @@ namespace SnackTrace.Repositories.Implementations
 
 			HandleOrder(ref query, order);
 
-			if (first != default)
+			if (skip != default)
 			{
-				query = query.Take(first);
+				query = query.Skip(skip);
+			}
+
+			if (take != default)
+			{
+				query = query.Take(take);
 			}
 
 			return query;
@@ -108,8 +102,6 @@ namespace SnackTrace.Repositories.Implementations
 				if (where.CreatedAfter != default)
 				{
 					query = query.Where(i => i.Created.GetValueOrDefault() >= where.CreatedAfter);
-
-					query = query.OrderBy<Snack, string>(i => i.Name);
 				}
 			}
 		}

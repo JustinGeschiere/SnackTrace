@@ -5,12 +5,11 @@ using SnackTrace.GraphQL.Entities.Order;
 using SnackTrace.GraphQL.Entities.Where;
 using SnackTrace.Repositories.Interfaces;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace SnackTrace.Repositories.Implementations
 {
-	public class DrinkRepository : BaseRepository, IDrinkRepository
+	internal class DrinkRepository : BaseRepository, IDrinkRepository
 	{
 		public DrinkRepository(DataContext dataContext) : base(dataContext)
 		{ }
@@ -45,16 +44,7 @@ namespace SnackTrace.Repositories.Implementations
 			_dataContext.SaveChanges();
 		}
 
-		public IQueryable<Drink> GetQuery(WhereDrink where)
-		{
-			var query = GetBaseQuery(where);
-
-			HandleWhere(ref query, where);
-
-			return query;
-		}
-
-		public IQueryable<Drink> GetQuery(WhereDrink where, OrderDrink order, int first)
+		public IQueryable<Drink> GetQuery(WhereDrink where, OrderDrink order, int skip, int take)
 		{
 			var query = GetBaseQuery(where);
 
@@ -62,9 +52,14 @@ namespace SnackTrace.Repositories.Implementations
 
 			HandleOrder(ref query, order);
 
-			if (first != default)
+			if (skip != default)
 			{
-				query = query.Take(first);
+				query = query.Skip(skip);
+			}
+
+			if (take != default)
+			{
+				query = query.Take(take);
 			}
 
 			return query;
