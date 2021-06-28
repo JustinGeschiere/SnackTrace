@@ -1,0 +1,41 @@
+﻿@model SnackTrace.Web.Areas.Admin.Models.Snacks.IndexRenderModel;
+
+@{
+    ViewData["Title"] = "Snacks";
+    var addLink = $"/Admin/Snacks/Create";
+    var backLink = $"/Admin/Overview/Index";
+}
+
+<h1>Snacks</h1>
+
+<br />
+<table class="table table-bordered" style="width:100%; text-align:left">
+    <tr>
+        <th>@Html.LabelFor(i => i.Template.Name)</th>
+        <th>@Html.LabelFor(i => i.Template.Price)</th>
+        <th>@Html.LabelFor(i => i.Template.MenuCount)</th>
+        <th>@Html.Label("Actions", "Actions")</th>
+    </tr>
+
+    @foreach (var item in Model.Items)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Name, "Details", "Snacks", new { area = "Admin", id = item.Id })
+            </td>
+            <td>@Html.ValueFor(i => item.Price)</td>
+            <td>@Html.ValueFor(i => item.MenuCount)</td>
+            <td>
+                @using (Html.BeginForm("DeleteConfirm", "Snacks", new { area = "Admin" }, FormMethod.Post))
+                {
+                    <input type="hidden" name="Id" value="@item.Id" />
+                    <input type="submit" value="Delete" class="btn btn-danger" />
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+<input type="button" class="btn btn-secondary" value="Back" onclick="@($"window.location.href='{backLink}'")" />
+<input type="button" class="btn btn-info" value="Add" onclick="@($"window.location.href='{addLink}'")" />
+

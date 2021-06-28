@@ -1,0 +1,49 @@
+﻿@model SnackTrace.Web.Areas.Admin.Models.Menus.CreateRenderModel;
+
+@{
+    ViewData["Title"] = "Menus";
+    var backLink = $"/Admin/Menus/Index";
+}
+
+<h1>Add Menu</h1>
+
+<br />
+@using (Html.BeginForm("CreateConfirm", "Menus", new { area = "Admin" }, FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(i => Model.Name)
+        <input asp-for="Name" value="@Model.Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(i => Model.Price)
+        <input asp-for="Price" value="@Model.Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                @Html.LabelFor(i => Model.Snacks)
+                <br />
+                <select multiple asp-for="Snacks" asp-items="@(new SelectList(Model.Snacks, "Id", "Name"))" ></select>
+                <span asp-validation-for="Snacks" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                @Html.LabelFor(i => Model.Drinks)
+                <br />
+                <select multiple asp-for="Drinks" asp-items="@(new SelectList(Model.Drinks, "Id", "Name"))"></select>
+                <span asp-validation-for="Drinks" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <input type="button" class="btn btn-secondary" value="Back" onclick="@($"window.location.href='{backLink}'")" />
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+}
+

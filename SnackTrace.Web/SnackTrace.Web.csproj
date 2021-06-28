@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SnackTrace.Data\SnackTrace.Data.csproj" />
+    <ProjectReference Include="..\SnackTrace.GraphQL\SnackTrace.GraphQL.csproj" />
+    <ProjectReference Include="..\SnackTrace.Repositories\SnackTrace.Repositories.csproj" />
+    <ProjectReference Include="..\SnackTrace.Services\SnackTrace.Services.csproj" />
+    <ProjectReference Include="..\SnackTrace.Utility\SnackTrace.Utility.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
+  </ItemGroup>
+
+</Project>

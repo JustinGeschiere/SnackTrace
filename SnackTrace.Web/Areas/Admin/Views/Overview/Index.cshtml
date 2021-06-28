@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Overview";
+}
+
+<h1>Overview</h1>
+
+<br />
+<h2>Entities</h2>
+<ul>
+    <li>
+        @Html.ActionLink("Snacks", "Index", "Snacks", new { area = "Admin" })
+    </li>
+    <li>
+        @Html.ActionLink("Drinks", "Index", "Drinks", new { area = "Admin" })
+    </li>
+    <li>
+        @Html.ActionLink("Menus", "Index", "Menus", new { area = "Admin" })
+    </li>
+</ul>
+

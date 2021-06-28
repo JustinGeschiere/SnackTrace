@@ -1,0 +1,57 @@
+﻿@model SnackTrace.Web.Areas.Admin.Models.Drinks.DetailsRenderModel;
+
+@{
+    ViewData["Title"] = "Drinks";
+    var backLink = $"/Admin/Drinks/Index";
+}
+
+<h1>@Model.Name</h1>
+
+<br />
+<h2>Details</h2>
+<table class="table table-bordered" style="width:100%; text-align:left">
+    <tr>
+        <th>@Html.LabelFor(i => Model.Id)</th>
+        <td>@Html.ValueFor(i => Model.Id)</td>
+    </tr>
+    <tr>
+        <th>@Html.LabelFor(i => Model.Name)</th>
+        <td>@Html.ValueFor(i => Model.Name)</td>
+    </tr>
+    <tr>
+        <th>@Html.LabelFor(i => Model.Price)</th>
+        <td>@Html.ValueFor(i => Model.Price)</td>
+    </tr>
+</table>
+
+<br />
+<h2>@Html.LabelFor(i => Model.Menus)</h2>
+@if (Model.Menus?.Any() ?? false)
+{
+    <table class="table table-bordered" style="width:100%; text-align:left">
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+        </tr>
+
+        @foreach (var item in Model.Menus)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.Name, "Details", "Menus", new { area = "Admin", id = item.Id })
+                </td>
+                <td>@item.Price</td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <table class="table table-bordered" style="width:100%; text-align:left">
+        <tr>
+            <td>Entity doesn't have menus</td>
+        </tr>
+    </table>
+}
+
+<input type="button" class="btn btn-secondary" value="Back" onclick="@($"window.location.href='{backLink}'")" />

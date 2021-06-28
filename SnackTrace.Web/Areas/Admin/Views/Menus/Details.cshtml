@@ -1,0 +1,91 @@
+﻿@model SnackTrace.Web.Areas.Admin.Models.Menus.DetailsRenderModel;
+
+@{
+    ViewData["Title"] = "Snacks";
+    var backLink = $"/Admin/Snacks/Index";
+}
+
+<h1>@Model.Name</h1>
+
+<br />
+<h2>Details</h2>
+<table class="table table-bordered" style="width:100%; text-align:left">
+    <tr>
+        <th>@Html.LabelFor(i => Model.Id)</th>
+        <td>@Html.ValueFor(i => Model.Id)</td>
+    </tr>
+    <tr>
+        <th>@Html.LabelFor(i => Model.Name)</th>
+        <td>@Html.ValueFor(i => Model.Name)</td>
+    </tr>
+    <tr>
+        <th>@Html.LabelFor(i => Model.Price)</th>
+        <td>@Html.ValueFor(i => Model.Price)</td>
+    </tr>
+</table>
+
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2>@Html.LabelFor(i => Model.Snacks)</h2>
+        @if (Model.Snacks?.Any() ?? false)
+        {
+            <table class="table table-bordered" style="width:100%; text-align:left">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+
+                @foreach (var item in Model.Snacks)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink(item.Name, "Details", "Snacks", new { area = "Admin", id = item.Id })
+                        </td>
+                        <td>@item.Price</td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <table class="table table-bordered" style="width:100%; text-align:left">
+                <tr>
+                    <td>Entity doesn't have snacks</td>
+                </tr>
+            </table>
+        }
+    </div>
+    <div class="col-6">
+        <h2>@Html.LabelFor(i => Model.Drinks)</h2>
+        @if (Model.Drinks?.Any() ?? false)
+        {
+            <table class="table table-bordered" style="width:100%; text-align:left">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                </tr>
+
+                @foreach (var item in Model.Drinks)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink(item.Name, "Details", "Drinks", new { area = "Admin", id = item.Id })
+                        </td>
+                        <td>@item.Price</td>
+                    </tr>
+                }
+            </table>
+        }
+        else
+        {
+            <table class="table table-bordered" style="width:100%; text-align:left">
+                <tr>
+                    <td>Entity doesn't have drinks</td>
+                </tr>
+            </table>
+        }
+    </div>
+</div>
+
+<input type="button" class="btn btn-secondary" value="Back" onclick="@($"window.location.href='{backLink}'")" />
