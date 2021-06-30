@@ -1,4 +1,5 @@
 ﻿using GraphQL;
+using SnackTrace.GraphQL.Resolvers.Contexts;
 using SnackTrace.Services.Interfaces;
 using System;
 
@@ -19,7 +20,7 @@ namespace SnackTrace.GraphQL.Resolvers
 			};
 		}
 
-		public static Func<IResolveFieldContext<TcontextEntity>, object> GetQueryResolver<TcontextEntity>(IGraphService<Tentity, Twhere, Torder> service, Func<IResolveFieldContext<TcontextEntity>, Twhere, Twhere> customWhere)
+		public static Func<IResolveFieldContext<Tsource>, object> GetQueryResolver<Tsource>(IGraphService<Tentity, Twhere, Torder> service, BaseContext<Tsource>.CustomWhere<Twhere> customWhere)
 		{
 			return context =>
 			{

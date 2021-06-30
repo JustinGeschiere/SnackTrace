@@ -2,6 +2,7 @@
 using SnackTrace.GraphQL.Entities;
 using SnackTrace.GraphQL.Entities.Order;
 using SnackTrace.GraphQL.Entities.Where;
+using SnackTrace.GraphQL.Resolvers.Contexts;
 using SnackTrace.Services.Interfaces;
 using System;
 
@@ -11,7 +12,7 @@ namespace SnackTrace.GraphQL.Resolvers
 	{
 		public static Func<IResolveFieldContext<Menu>, object> GetMenuConnectionResolver(IDrinkService service)
 		{
-			Func<IResolveFieldContext<Menu>, WhereDrink, WhereDrink> setMenuConnection = (context, where) =>
+			MenuContext.CustomWhere<WhereDrink> setMenuConnection = (context, where) =>
 			{
 				if (where == null)
 				{
