@@ -10,6 +10,7 @@ namespace SnackTrace.Web.Areas.Admin.Models.Snacks
 		public string Name { get; set; }
 
 		[Display(Name = "Price")]
+		[DataType(DataType.Currency)]
 		[ConvertKey("Price")]
 		public decimal Price { get; set; }
 	}
