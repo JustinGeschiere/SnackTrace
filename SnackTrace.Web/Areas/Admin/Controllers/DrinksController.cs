@@ -71,7 +71,12 @@ namespace SnackTrace.Web.Areas.Admin.Controllers
 
 			try
 			{
-				var entity = model.ConvertTo<Drink>();
+				var entity = model.ConvertTo<CreateInputModel,Drink>((input, output) => 
+				{
+					output.Created = DateTime.UtcNow;
+					output.Modified = DateTime.UtcNow;
+				});
+
 				_drinkService.Add(entity);
 
 				return RedirectToAction(nameof(Index));

@@ -10,7 +10,9 @@ namespace SnackTrace.Services.Converters
 			{
 				Id = model.Id,
 				Name = model.Name,
-				Price = model.Price
+				Price = model.Price,
+				Created = model.Created,
+				Modified = model.Modified
 			};
 		}
 
@@ -29,6 +31,8 @@ namespace SnackTrace.Services.Converters
 				Id = model.Id,
 				Name = model.Name,
 				Price = model.Price,
+				Created = model.Created,
+				Modified = model.Modified,
 				Snacks = new List<Data.Models.Snack>(),
 				Drinks = new List<Data.Models.Drink>()
 			};

@@ -87,6 +87,9 @@ namespace SnackTrace.Web.Areas.Admin.Controllers
 				{
 					output.Snacks = input.Snacks.Select(i => _snackService.Get(i)).ToArray();
 					output.Drinks = input.Drinks.Select(i => _drinkService.Get(i)).ToArray();
+
+					output.Created = DateTime.UtcNow;
+					output.Modified = DateTime.UtcNow;
 				});
 
 				_menuService.Add(entity);

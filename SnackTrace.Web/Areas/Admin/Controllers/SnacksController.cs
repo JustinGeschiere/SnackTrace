@@ -70,7 +70,12 @@ namespace SnackTrace.Web.Areas.Admin.Controllers
 
 			try
 			{
-				var entity = model.ConvertTo<Snack>();
+				var entity = model.ConvertTo<CreateInputModel, Snack>((input, output) =>
+				{
+					output.Created = DateTime.UtcNow;
+					output.Modified = DateTime.UtcNow;
+				});
+
 				_snackService.Add(entity);
 
 				return RedirectToAction(nameof(Index));
