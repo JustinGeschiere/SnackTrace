@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace SnackTrace.Services.Converters
 {
@@ -24,6 +26,16 @@ namespace SnackTrace.Services.Converters
 			}
 		}
 
+		public static async Task<IEnumerable<GraphQL.Entities.Drink>> ToGraphEntitiesAsync(this IEnumerable<Data.Models.Drink> models)
+		{
+			var conversionTasks = models.Select(i => Task.Run(() => i.ToGraphEntity()));
+
+			await Task.WhenAll(conversionTasks);
+
+			return conversionTasks.Select(i => i.Result);
+		}
+
+		/*
 		public static Data.Models.Drink ToDataEntity(this GraphQL.Entities.Drink model)
 		{
 			return new Data.Models.Drink()
@@ -44,5 +56,6 @@ namespace SnackTrace.Services.Converters
 				yield return model.ToDataEntity();
 			}
 		}
+		*/
 	}
 }

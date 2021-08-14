@@ -11,7 +11,8 @@ namespace SnackTrace.GraphQL
 
 			services.AddGraphQL()
 				.AddSystemTextJson()
-				.AddGraphTypes(typeof(Schema), ServiceLifetime.Scoped);
+				.AddGraphTypes(typeof(Schema), ServiceLifetime.Scoped)
+				.AddDataLoader();
 		}
 	}
 }

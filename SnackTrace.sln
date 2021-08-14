@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnackTrace.GraphQL", "Snack
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnackTrace.GraphQL.Entities", "SnackTrace.GraphQL.Entities\SnackTrace.GraphQL.Entities.csproj", "{F92DB051-5825-462A-BB3C-D9643EA457B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnackTrace.Utility", "SnackTrace.Utility\SnackTrace.Utility.csproj", "{DF64E3E6-5E73-4B9D-85F5-0008B61E0785}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SnackTrace.Utility", "SnackTrace.Utility\SnackTrace.Utility.csproj", "{DF64E3E6-5E73-4B9D-85F5-0008B61E0785}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnackTrace.GraphQL.DataLoaders", "SnackTrace.GraphQL.DataLoaders\SnackTrace.GraphQL.DataLoaders.csproj", "{DE1827AD-479E-40D1-8B78-7B7FD3ABA16D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{DF64E3E6-5E73-4B9D-85F5-0008B61E0785}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF64E3E6-5E73-4B9D-85F5-0008B61E0785}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF64E3E6-5E73-4B9D-85F5-0008B61E0785}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE1827AD-479E-40D1-8B78-7B7FD3ABA16D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE1827AD-479E-40D1-8B78-7B7FD3ABA16D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE1827AD-479E-40D1-8B78-7B7FD3ABA16D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE1827AD-479E-40D1-8B78-7B7FD3ABA16D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

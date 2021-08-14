@@ -26,6 +26,7 @@ namespace SnackTrace.Web
 			Repositories.DependencyInjection.Register(services);
 			Services.DependencyInjection.Register(services);
 			GraphQL.DependencyInjection.Register(services);
+			GraphQL.DataLoaders.DependencyInjection.Register(services);
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

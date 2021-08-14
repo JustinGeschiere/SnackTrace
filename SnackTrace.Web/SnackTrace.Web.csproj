@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SnackTrace.Data\SnackTrace.Data.csproj" />
+    <ProjectReference Include="..\SnackTrace.GraphQL.DataLoaders\SnackTrace.GraphQL.DataLoaders.csproj" />
     <ProjectReference Include="..\SnackTrace.GraphQL\SnackTrace.GraphQL.csproj" />
     <ProjectReference Include="..\SnackTrace.Repositories\SnackTrace.Repositories.csproj" />
     <ProjectReference Include="..\SnackTrace.Services\SnackTrace.Services.csproj" />

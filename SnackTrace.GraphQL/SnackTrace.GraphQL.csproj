@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SnackTrace.Data\SnackTrace.Data.csproj" />
+    <ProjectReference Include="..\SnackTrace.GraphQL.DataLoaders\SnackTrace.GraphQL.DataLoaders.csproj" />
     <ProjectReference Include="..\SnackTrace.GraphQL.Entities\SnackTrace.GraphQL.Entities.csproj" />
     <ProjectReference Include="..\SnackTrace.Services\SnackTrace.Services.csproj" />
   </ItemGroup>
